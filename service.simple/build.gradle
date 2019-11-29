@@ -1,0 +1,77 @@
+plugins {
+    id "org.sonarqube" version "2.6.2"
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    //id "io.freefair.aspectj.post-compile-weaving" version "4.1.5"
+//    id "io.freefair.aspectj.compile-time-weaving" version "3.8.4"
+}
+
+ext {
+    springCloudVersion = 'Finchley.SR1'
+}
+
+configurations {
+    all*.exclude group: 'de.erichseifert.vectorgraphics2d', module: 'VectorGraphics2D'
+
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+apply plugin: 'maven-publish'
+//apply plugin: 'io.freefair.aspectj.post-compile-weaving'
+//apply plugin: 'io.freefair.aspectj.compile-time-weaving'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.boot:spring-boot-starter-aop',
+            'org.springframework.security.oauth:spring-security-oauth2:2.3.6.RELEASE',
+            'org.springframework.cloud:spring-cloud-starter-sleuth',
+            'org.springframework.retry:spring-retry',
+            'com.google.guava:guava:22.0',
+            'org.apache.commons:commons-lang3:3.8',
+            'org.modelmapper:modelmapper:2.3.5',
+            'io.micrometer:micrometer-registry-prometheus',
+
+            //  Swagger is used to document our api endpoints
+            'org.springdoc:springdoc-openapi-ui:1.1.+',
+
+            //moskito
+            'net.anotheria:moskito-core:2.9.1',
+            'net.anotheria:moskito-aop:2.9.1',
+            'net.anotheria:moskito-webui:2.9.1',
+            'net.anotheria:moskito-inspect-remote:2.9.1'
+
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2',
+            'org.junit.jupiter:junit-jupiter-params:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testImplementation('org.assertj:assertj-core:3.13.2')
+    testImplementation('org.mockito:mockito-junit-jupiter:2.23.0')
+
+    //aspects "net.anotheria:moskito-aop:2.9.1"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

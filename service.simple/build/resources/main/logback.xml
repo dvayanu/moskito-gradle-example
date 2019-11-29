@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="SAVE-TO-FILE">
+    <file>log/payment-main.log</file>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>${FILE_LOG_PATTERN}</Pattern>
+      <charset>utf8</charset>
+    </encoder>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>log/currency-converter/payment-main_%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>365</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="SAVE-TO-FILE"/>
+  </root>
+
+</configuration>

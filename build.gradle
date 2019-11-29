@@ -1,0 +1,13 @@
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+
+    group = 'de.nitrobox'
+    version = '1.0.0'
+    sourceCompatibility = 11
+
+    task allDeps(type: DependencyReportTask) {}
+}
