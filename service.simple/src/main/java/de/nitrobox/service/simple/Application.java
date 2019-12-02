@@ -10,16 +10,16 @@ import net.anotheria.moskito.webui.embedded.MoSKitoInspectStartException;
 public class Application {
 
   public static void main(String[] args) {
-  	System.out.println("Hello1");
+    System.out.println("Hello!");
     SpringApplication.run(Application.class, args);
   }
 
   @PostConstruct
-  public void startMoSKito() throws MoSKitoInspectStartException{
-  		int veryWellConfiguredMoskitoPort = 49194;
-	  System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort + " port! !");
-	  StartMoSKitoInspectBackendForRemote.startMoSKitoInspectBackend(veryWellConfiguredMoskitoPort);
-	  System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort + " port! Performed successfully!");
-
+  public void startMoSKito() throws MoSKitoInspectStartException {
+    int veryWellConfiguredMoskitoPort = 49194;
+    System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort + " port! !");
+    StartMoSKitoInspectBackendForRemote.startMoSKitoInspectBackend(veryWellConfiguredMoskitoPort);
+    System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort
+        + " port! Performed successfully!");
   }
 }
