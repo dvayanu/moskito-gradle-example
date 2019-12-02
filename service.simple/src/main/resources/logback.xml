@@ -9,7 +9,7 @@
   </appender>
 
   <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="SAVE-TO-FILE">
-    <file>log/payment-main.log</file>
+    <file>log/simple.log</file>
 
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
       <Pattern>${FILE_LOG_PATTERN}</Pattern>
@@ -17,7 +17,7 @@
     </encoder>
 
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>log/currency-converter/payment-main_%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>log/simple/simple_%d{yyyy-MM-dd}.log</fileNamePattern>
       <maxHistory>365</maxHistory>
       <totalSizeCap>1GB</totalSizeCap>
     </rollingPolicy>

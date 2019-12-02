@@ -16,10 +16,10 @@ public class Application {
 
   @PostConstruct
   public void startMoSKito() throws MoSKitoInspectStartException {
-    int veryWellConfiguredMoskitoPort = 49194;
-    System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort + " port! !");
-    StartMoSKitoInspectBackendForRemote.startMoSKitoInspectBackend(veryWellConfiguredMoskitoPort);
-    System.out.println("Starting Moskito backend on " + veryWellConfiguredMoskitoPort
-        + " port! Performed successfully!");
+//    int moskitoPort = 49194;
+//    System.out.println("Starting Moskito backend on " + moskitoPort + " port! !");
+//    StartMoSKitoInspectBackendForRemote.startMoSKitoInspectBackend(moskitoPort);
+//    System.out.println("Starting Moskito backend on " + moskitoPort
+//        + " port! Performed successfully!");
   }
 }

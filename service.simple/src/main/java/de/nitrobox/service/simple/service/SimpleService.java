@@ -7,8 +7,8 @@ import net.anotheria.moskito.aop.annotation.Monitor;
 @Monitor
 public class SimpleService {
 
-  public void someMethod() {
-    System.out.println("someMethod was calledd");
+  public void someMethod(String param) {
+    System.out.println("someMethod was called: " + param);
   }
 
 }
